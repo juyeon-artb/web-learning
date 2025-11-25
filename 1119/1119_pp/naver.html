@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <title>네이버 느낌 페이지</title>
+  <style>
+    /* 기본 설정 */
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", system-ui, sans-serif;
+      background-color: #f5f6f7; /* 네이버 느낌 배경색 */
+      color: #202020;
+    }
+
+    /* ---------------- 헤더 영역 ---------------- */
+    header {
+      background-color: #03c75a; /* 네이버 초록 */
+      box-shadow: 0 1px 4px rgba(0, 0, 0, 0.15);
+    }
+
+    .header-inner {
+      max-width: 1080px;
+      margin: 0 auto;
+      padding: 10px 16px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    /* 로고 영역 */
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .logo-box {
+      width: 32px;
+      height: 32px;
+      background-color: #03c75a;
+      border-radius: 8px;
+      border: 2px solid #ffffff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 900;
+      color: #ffffff;
+      font-size: 20px;
+    }
+
+    .logo-text {
+      font-size: 22px;
+      font-weight: 900;
+      color: #ffffff;
+      letter-spacing: 0.05em;
+    }
+
+    /* 상단 메뉴 */
+    nav a {
+      margin-left: 16px;
+      text-decoration: none;
+      color: #e6fff2;
+      font-size: 14px;
+    }
+
+    nav a:hover {
+      text-decoration: underline;
+    }
+
+    /* ---------------- 검색창 ---------------- */
+    .search-area {
+      padding: 8px 0 14px;
+    }
+
+    .search-form {
+      max-width: 620px;
+      margin: 0 auto;
+      background-color: #ffffff;
+      border-radius: 30px;
+      display: flex;
+      align-items: center;
+      padding: 8px 14px;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+    }
+
+    .search-category {
+      font-size: 13px;
+      color: #555;
+      padding-right: 12px;
+      margin-right: 12px;
+      border-right: 1px solid #e5e5e5;
+      white-space: nowrap;
+    }
+
+    .search-form input[type="text"] {
+      flex: 1;
+      border: none;
+      outline: none;
+      font-size: 16px;
+      padding: 6px 8px;
+    }
+
+    .search-form button {
+      border: none;
+      background-color: #03c75a;
+      color: #ffffff;
+      font-size: 14px;
+      font-weight: 700;
+      padding: 6px 16px;
+      border-radius: 20px;
+      cursor: pointer;
+    }
+
+    .search-form button:hover {
+      background-color: #02b653;
+    }
+
+    /* ---------------- 메인 영역 ---------------- */
+    main {
+      max-width: 1080px;
+      margin: 24px auto 40px;
+      padding: 0 16px;
+
+      display: grid;
+      grid-template-columns: 2fr 1.3fr;
+      grid-template-rows: auto auto;
+      gap: 16px;
+    }
+
+    .card {
+      background-color: #ffffff;
+      border-radius: 8px;
+      border: 1px solid #e3e5e8;
+      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
+      padding: 20px 18px 22px;
+    }
+
+    .main-card {
+      grid-column: 1 / 2;
+      grid-row: 1 / 2;
+    }
+
+    .side-card {
+      grid-column: 2 / 3;
+      grid-row: 1 / 2;
+    }
+
+    .full-card {
+      grid-column: 1 / 3;
+      grid-row: 2 / 3;
+    }
+
+    .card h2 {
+      margin: 0 0 12px;
+      font-size: 18px;
+      font-weight: 700;
+      color: #101010;
+    }
+
+    .card p {
+      margin: 4px 0;
+      font-size: 14px;
+      line-height: 1.6;
+      color: #404040;
+    }
+
+    .card ul {
+      list-style: none;
+      padding-left: 0;
+      margin: 0;
+    }
+
+    .card li {
+      font-size: 14px;
+      color: #202020;
+      padding: 4px 0;
+      position: relative;
+    }
+
+    /* 리스트 앞에 초록색 점 */
+    .card li::before {
+      content: "·";
+      color: #03c75a;
+      font-weight: 900;
+      position: absolute;
+      left: -10px;
+    }
+
+    .card li:hover {
+      color: #03c75a;
+      cursor: pointer;
+      text-decoration: underline;
+    }
+
+    .notice-list li {
+      padding: 6px 0;
+    }
+
+    /* ---------------- 푸터 ---------------- */
+    footer {
+      border-top: 1px solid #e3e5e8;
+      padding: 16px 0 24px;
+      font-size: 12px;
+      color: #7f7f7f;
+      text-align: center;
+    }
+
+    @media (max-width: 768px) {
+      main {
+        grid-template-columns: 1fr;
+        grid-template-rows: auto auto auto;
+      }
+      .main-card,
+      .side-card,
+      .full-card {
+        grid-column: 1 / 2;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- 헤더 -->
+  <header>
+    <div class="header-inner">
+      <div class="logo">
+        <div class="logo-box">N</div>
+        <div class="logo-text">NAVER</div>
+      </div>
+      <nav>
+        <a href="#">메일</a>
+        <a href="#">카페</a>
+        <a href="#">블로그</a>
+        <a href="#">뉴스</a>
+      </nav>
+    </div>
+
+    <!-- 검색창 -->
+    <div class="search-area">
+      <form class="search-form">
+        <div class="search-category">통합검색</div>
+        <input type="text" placeholder="검색어를 입력해 주세요" />
+        <button type="submit">검색</button>
+      </form>
+    </div>
+  </header>
+
+  <!-- 메인 콘텐츠 -->
+  <main>
+    <!-- 왼쪽 큰 카드 -->
+    <section class="card main-card">
+      <h2>환영합니다</h2>
+      <p>이 페이지는 네이버 메인 레이아웃을 연습하기 위한 예제입니다.</p>
+      <p>HTML과 CSS만으로도 이런 구조의 웹 페이지를 만들 수 있습니다.</p>
+      <p>그리드 레이아웃, 카드 UI, 검색창 등을 연습해 보세요.</p>
+    </section>
+
+    <!-- 오른쪽 카드 (예: 학습 내용) -->
+    <section class="card side-card">
+      <h2>학습 내용</h2>
+      <ul>
+        <li>HTML 기본 구조 익히기</li>
+        <li>CSS 선택자와 박스 모델</li>
+        <li>레이아웃(grid, flex) 사용</li>
+        <li>실제 사이트 따라 만들어 보기</li>
+      </ul>
+    </section>
+
+    <!-- 아래쪽 전체 카드 (예: 공지 영역) -->
+    <section class="card full-card">
+      <h2>오늘의 공지</h2>
+      <ul class="notice-list">
+        <li>실습 코드는 꼭 저장하고, 파일 이름과 경로를 정리해 두세요.</li>
+        <li>CSS 파일 이름은 가급적 영문으로 사용하는 습관을 들이면 좋습니다.</li>
+        <li>네이버처럼 실제 사이트를 따라 만들어 보면 레이아웃 감각이 확 늘어납니다.</li>
+      </ul>
+    </section>
+  </main>
+
+  <!-- 푸터 -->
+  <footer>
+    <p>&copy; 2025 나의 첫 네이버 스타일 웹페이지</p>
+  </footer>
+
+</body>
+</html>
